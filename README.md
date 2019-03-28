@@ -59,9 +59,7 @@ Below are a bunch of questions and indications of things to do. For each indicat
 * List everyone's names and uniqnames who have worked on this assignment with you, **including your own name, but make sure YOUR name is first and bold**
 * Like this:
 * **Zuyi Cai(zuyicai)**
-*
-*
-* etc.
+* Pengwei Cui(cpengwei)
 
 ## Questions & code instructions
 
@@ -81,30 +79,16 @@ In JavaScript, "//" is the character put before a comment.
 
 * **Explain what needs to happen to get a JavaScript program to "run", given the JavaScript you've seen in this assignment.**
 
-
+Before running the JavaScript, we need to have some HTML and CSS codes. Because a JavaScript program runs based on them and we need a browser to run those.
 
 * **What functions in JavaScript seem to be similar in function to the `print` function in Python? (There are two.) Why might you use one and not the other? Explain briefly.**
 
-```js
-alert()
-```
-and
-```js
-console.log()
-```
-The second one is preferred.
-alert() is blocking
-alert() cannot be easily suppressed in non-debug environment
-console typically formats your objects nicely and allows to traverse them
-logging statements often have an interactive pointer to code which issued logging statement
-you cannot look at more than one alert() message at a time
-consoles can have different logging levels with intuitive formatting
+`alert` and `console.log()`. The second one is preferred. Because `alert` is blocking, it cannot be easily suppressed in non-debug environment.
+`console` typically formats objects nicely and allows to traverse them. We cannot look at more than one alert() message at a time. But, if we just simply want to display data, `alert` might not be a bad choice.
 
 * **What code would have to comment out to get rid of the pop-up box when you load the page? (Related to the last question.) Do that in the code file, and then, add code so that a text box will appear that contains the current date and time! *HINT:* Look through the rest of the code first...**
 
-```js
-alert("hello")
-```
+I need to comment out the code `alert("hello");`. Add code `alert(new Date())` to create a pop-up box containing the current date and time.
 
 * **How can you put your own name at the top where it currently says "A name"? Explain very briefly how to do so, and replace `A name` in the web page with your own name.**
 
@@ -115,11 +99,14 @@ document.querySelector('h1').innerHTML = "A name"
 
 * **What does the word `document` represent in this code? Explain briefly.**
 
+The `document` represents a document object. We need to use the document object to access and do things to HTML.
+
 * **What is happening in line 12 (
 		`document.querySelector('#items').innerHTML = document.getElementsByTagName('li').length`
 )? Explain, briefly (<= 2 sentences).**
 
-To define the function that get the length of items with the tag name of "li".
+`document.getElementsByTagName('li').length`: To get the number of the tag name `li`.
+`document.querySelector('#items').innerHTML`: To store the number of the tag name `li` in items.
 
 * **What color would the background of this page be <u>if there were no JavaScript in this page</u>?**
 
@@ -127,12 +114,12 @@ White
 
 * **Why are there a couple of gray boxes on the screen with a different colored border? How could you edit this code to make them a different color? Explain briefly. Then edit the code to make those boxes some shade of blue, of your choosing.**
 
-Because in displayInformation, "background-color: #b3b3b3;" makes the boxes' background is grey.
-I can edit the code to make boxes with some shade of blue by "background-color: #80dfff;"
+Because in displayInformation, `background-color: #b3b3b3;` makes the boxes' background is grey. And `border: 3px solid #FFFFFF;` determines the border's color.
+I can edit the code to make boxes with some shade of blue by `background-color: #80dfff;` and changes border's color by `border: 3px solid #cc99ff;`.
 
 * **Edit the code so that, if you highlight `McGill University` and copy it, you see the text `O Canada` near the bottom of the page. Briefly explain why you made the edits that you did -- how did you know/figure out what to do?**
 
-Refer to the copyFunction of "University of Michigan", I created the copyFunction_canada.
+I find that when I highlight 'University of Michigan' and copy it, it will show 'Go blue!'. Refer to the copyFunction of "University of Michigan", I created the `copyFunction_canada()`.
 
 ```js
 function copyFunction_canada(){
@@ -158,7 +145,8 @@ function handleClick(){
 ```js
 <button onclick=handleClick() id="wow-button">Wow</button>
 ```
-Because in original code, we already create the function handleClick, and onclick is the instance of the function. When we click the wow-button, we create onclick and it will alert "hello".
+
+Because in original code, we already created the function `handleClick()`, and when we click the wow-button, we will call the function and that function will create a text box containing `hello!`.
 
 
 * **Knowing what you learned from the previous question, add code/markup to the `jsPracticeLab.html` file *so that* there is a button with the text `Spring Equinox 2019` on it somewhere on the page, and when that button is clicked, a text box containing the text `March 20, 2019` appears. (There's no function -- that I am aware of -- to automatically get this info, you've got to type it yourself.)**
@@ -181,16 +169,26 @@ Because in original code, we already create the function handleClick, and onclic
     }
 </style>
 ```
+The codes above enable that when we input an error message, it will be red. When we input valid message, it will be blue.
 
 * **What is this line `var regex = /^[a-zA-Z]+$/;` helping with? And if you googled something to figure that out, what did you google, and what, briefly, did you learn? (If you didn't need to google, you can leave that out, but explain briefly what that line is helping the program do, anyway.)**
 
 regular expression.
+
 I googled with "/^[a-zA-Z]+$/", and it means "match all strings that start with a letter", "^" is used to signal the start of the text.
-This line helps to
+This regular expression is helpful when the multiline mode is enabled. It will match only a single word. And if we have more than one word, it won't match anything,
+
+This line helps to determine whether the input is valid or not. If the input is valid, we get the blue text. Otherwise, we get the red error.
 
 * **What's different about the syntax of conditional statements in JavaScript, compared to Python?**
 
+JavaScript write conditions in parentheses while Python do not.
+Python uses indentation. In Python IF and ELSE statements have the same indentation while JavaScript do not.
+Python uses indentation to write statements while JavaScript uses curly brackets.
+
 * **What do you think the `10000` refers to in the code `.fadeOut(10000)`?**
+
+It specifies the fading time of the error message or the valid message. And it's effective when used together with `event.preventDefault();`
 
 * **What do you think is going on with the following code at the beginning of the program? Note that the most important thing to do for answering this question is to be thoughtful and clear, not to be absolutely correct:**
 
@@ -198,6 +196,11 @@ This line helps to
 $(document).ready(function(){
     $("form").submit(function(event){
 ```
+
+`$(document).ready(function()` is used to make a function available after the document is loaded.
+`$("form").submit(function(event)` is used to trigger a submit event when a form is submitted.
+
+Those codes above are used to show the error message or the valid message when we click the submit button.
 
 
 * **Add some code to the `jquerylib_submit_example.html` file so that, if the input is valid and is specifically the text `hello`, rather than the visible output being `Nice!` in blue, the visible output should be `Hello to you too!`, also in blue, just like `Nice!` is.**

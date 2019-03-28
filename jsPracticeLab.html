@@ -10,7 +10,7 @@
 
 	// Output..
 	//alert("hello");
-	alert("Current Time/Date: ");
+	alert(new Date());
 	console.log("hello in console");
 
 	function displayInformation () {
@@ -20,7 +20,6 @@
 		document.querySelector('#time').innerHTML = new Date();
 		var body = document.querySelector('body')
 		body.style.background = "#CCEE00";
-		//body.style.background = "#80dfff" (change the color of the background)
 		// One place to find color option codes: https://www.w3schools.com/colors/colors_picker.asp
 		body.style.margin = "10%";
 	}
@@ -46,7 +45,8 @@
 p{
 	background-color: #80dfff;
 	/* background-color: #b3b3b3; (change the color of the boxes' background)*/
-	border: 3px solid #FFFFFF;
+	border: 3px solid #cc99ff;
+	/* border: 3px solid #FFFFFF; */
 	padding: 3%;
 	font-size: 1.1em;
 	line-height: 1.5;
